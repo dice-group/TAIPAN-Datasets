@@ -6,7 +6,7 @@
 "andorra","andorra          la vella","468","82627"
 "angola","luanda","1246700","12531357"
 "anguilla","the          valley","102","14108"
-"antigua          and barbuda","saint          john's","443","84522"
+"antigua          and barbuda","saint          john's","443","84522"
 "argentina","buenos          aires","2766890","40482000"
 "armenia","yerevan","29800","2968586"
 "aruba","oranjestad","193","101541"
@@ -37,15 +37,15 @@
 "cameroon","yaounde","475440","18467692"
 "canada","ottawa","9984670","33212696"
 "cape          verde","praia","4033","426998"
-"cayman          islands","george          town","262","47862"
+"cayman          islands","george          town","262","47862"
 "central          african republic","bangui","622984","4444330"
 "chad","n'djamena","1284000","10111337"
 "chile","santiago","756950","16454143"
 "china","beijing","9596960","1330044544"
 "china          hong kong sar","victoria","1092","7018636"
 "china          macao sar","macau","28","545674"
-"christmas          island","the          settlement","135","1402"
-"cocos          islands","west          island","14","596"
+"christmas          island","the          settlement","135","1402"
+"cocos          islands","west          island","14","596"
 "colombia","bogota","1138910","45013672"
 "comoros","moroni","2170","731775"
 "congo          dem. rep. of the","kinshasa","2345410","66514504"
@@ -60,10 +60,10 @@
 "denmark","copenhagen","43094","5484723"
 "djibouti","djibouti","23000","506221"
 "dominica","roseau","754","72514"
-"dominican          republic","santo          domingo","48730","9507133"
+"dominican          republic","santo          domingo","48730","9507133"
 "ecuador","quito","283560","13927650"
 "egypt","cairo","1001450","81713520"
-"el          salvador","san          salvador","21040","7066403"
+"el          salvador","san          salvador","21040","7066403"
 "equatorial guinea","malabo","28051","616459"
 "eritrea","asmara","121320","5502026"
 "estonia","tallinn","45226","1307605"
@@ -90,7 +90,7 @@
 "guinea-bissau","bissau","36120","1503182"
 "guyana","georgetown","214970","770794"
 "haiti","port-au-prince","27750","8924553"
-"holy see          (vatican city)","vatican          city","0","824"
+"holy see          (vatican city)","vatican          city","0","824"
 "honduras","tegucigalpa","112090","7639327"
 "hungary","budapest","93030","9930915"
 "iceland","reykjavik","103000","304367"
@@ -162,7 +162,7 @@
 "palau","melekeok","458","21093"
 "palestinian territory occupied","ramallah","6220","3907883"
 "panama","panama","78200","3309679"
-"papua new          guinea","port          moresby","462840","5931769"
+"papua new          guinea","port          moresby","462840","5931769"
 "paraguay","asuncion","406750","6831306"
 "peru","lima","1285220","29180900"
 "philippines","manila","300000","96061680"
@@ -182,7 +182,7 @@
 "saint          pierre and miquelon","saint-pierre","242","7044"
 "saint          vincent and the grenadines","kingstown","389","118432"
 "samoa","apia","2944","217083"
-"san          marino","san          marino","61","29973"
+"san          marino","san          marino","61","29973"
 "sao tome          and principe","sao tome","1001","206178"
 "saudi          arabia","riyadh","2149690","28146656"
 "senegal","dakar","196190","12853259"
@@ -194,7 +194,7 @@
 "slovenia","ljubljana","20273","2007711"
 "solomon          islands","honiara","28450","581318"
 "somalia","mogadishu","637657","9558666"
-"south          africa","pretoria          �","1219912","48782756"
+"south          africa","pretoria          �","1219912","48782756"
 "spain","madrid","504782","40491052"
 "sri lanka","colombo","65610","21128772"
 "sudan","khartoum","2505810","40218456"
@@ -216,7 +216,7 @@
 "tunisia","tunis","163610","10383577"
 "turkey","ankara","780580","71892808"
 "turkmenistan","ashgabat","488100","5179571"
-"turks and          caicos islands","cockburn          town","430","22352"
+"turks and          caicos islands","cockburn          town","430","22352"
 "tuvalu","fongafale","26","12177"
 "uganda","kampala","236040","31367972"
 "ukraine","kiev","603700","45994288"
@@ -228,7 +228,7 @@
 "vanuatu","port-vila","12200","215446"
 "venezuela","caracas","912050","26414816"
 "vietnam","hanoi","329560","86116560"
-"virgin          islands u.s.","charlotte          amalie","1910","109840"
+"virgin          islands u.s.","charlotte          amalie","1910","109840"
 "wallis          and futuna","mata-utu","274","15237"
 "western          sahara","none","266000","393831"
 "yemen","sanaa","527970","23013376"
