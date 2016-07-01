@@ -428,7 +428,7 @@
 "383","smooth-billed ani","smooth-billed ani","sban","crotophaga ani","crotophaga ani"
 "384","groove-billed ani","groove-billed ani","gban","crotophaga sulcirostris","crotophaga sulcirostris"
 "365","barn owl","barn owl","bano","tyto alba","tyto alba"
-"&nbsp;","screech owl","eastern/western                 screech owl","easo weso?","&nbsp;","&nbsp;"
+"&nbsp;","screech owl","eastern/western                 screech owl","easo weso?","&nbsp;","&nbsp;"
 "373.1","whiskered owl","whiskered screech-owl","whso","otus trichopsis","otus trichopsis"
 "374","flammulated owl","flammulated owl","flow","otus flammeolus","otus flammeolus"
 "375","great horned owl","great horned owl","ghow","bubo viginianus","bubo viginianus"
@@ -481,10 +481,10 @@
 "390.1","ringed kingfisher","ringed kingfisher","riki","megaceryle torquata","ceryle torquata"
 "391","green kingfisher","green kingfisher","gkin","chloroceryle americana","chloroceryle americana"
 "415.1","wryneck","eurasian wryneck","euwr","jynx torquilla","jynx torquilla"
-"412.5","hybrid flicker","flicker hybrid (red-sh. x                 yellow-sh.)","flin","n/a","n/a"
-"412","yellow-shafted flicker","northern flicker/                 yellow-shafted flicker","ysfl","colaptes auratus","colaptes auratus"
+"412.5","hybrid flicker","flicker hybrid (red-sh. x                 yellow-sh.)","flin","n/a","n/a"
+"412","yellow-shafted flicker","northern flicker/                 yellow-shafted flicker","ysfl","colaptes auratus","colaptes auratus"
 "413","red-shafted flicker","red-shafted flicker","rsfl","colaptes cafer","colaptes cafer"
-"412","guadalupe flicker","northern flicker/                 yellow-shafted flicker","ysfl","colaptes rufipileus","colaptes auratus"
+"412","guadalupe flicker","northern flicker/                 yellow-shafted flicker","ysfl","colaptes rufipileus","colaptes auratus"
 "414","gilded flicker","gilded flicker","gifl","colaptes chrysoides","colaptes chrysoides"
 "405","pileated woodpecker","pileated woodpecker","piwo","dryocopus pileatus","dryocopus pileatus"
 "409","red-bellied woodpecker","red-bellied woodpecker","rbwo","centurus carolinus","melanerpes caolinus"
@@ -503,7 +503,7 @@
 "395","red-cockaded woodpecker","red-cockaded woodpecker","rcwo","dendrocopos borealis","picoides borealis"
 "399","white-headed woodpecker","white-headed woodpecker","whwo","dendrocopos albolarvatus","picoides albolarvatus"
 "400","black-backed three-toed    woodpecker","black-backed woodpecker","bbwo","picoides arcticus","picoides arcticus"
-"401","northern three-toed woodpecker","american three-toed                 woodpecker","attw","picoides tridactylus","picoides tridactylus"
+"401","northern three-toed woodpecker","american three-toed                 woodpecker","attw","picoides tridactylus","picoides tridactylus"
 "392","ivory-billed woodpecker","ivory-billed woodpecker","ibwo","campephilus principalis","campephilus principalis"
 "441.1","rose-throated becard","rose-throated becard","rtbe","platypsaris aglaiae","pachyramphus aglaiae"
 "444","eastern kingbird","eastern kingbird","eaki","tyrannus tyrannus","tyrannus tyrannus"
@@ -539,7 +539,7 @@
 "462","western wood pewee","western wood-pewee","wewp","contopus sordidulus","contopus sordidulus"
 "459","olive-sided flycatcher","olive-sided flycatcher","osfl","contopus borealis","contopus cooperi"
 "471","vermilion flycatcher","vermilion flycatcher","vefl","pyrocephalus rubinus","pyrocephalus rubinus"
-"472","beardless flycatcher","northern beardless                 tyrannulet","nobt","camptostoma imberbe","camptostoma imberbe"
+"472","beardless flycatcher","northern beardless                 tyrannulet","nobt","camptostoma imberbe","camptostoma imberbe"
 "473","skylark","sky lark","skla","alauda arvensis","alauda arvensis"
 "474","horned lark","horned lark","hola","eremophila alpestris","eremophila alpestris"
 "615.1","bahama swallow","bahama swallow","bahs","callichelidon cyaneoviridis","tachycineta cyaneoviridis"
@@ -629,7 +629,7 @@
 "755","wood thrush","wood thrush","woth","hylocichla mustelina","hylocichla mustelina"
 "759","hermit thrush","hermit thrush","heth","hylocichla guttata","catharus guttatus"
 "758","swainson's thrush","swainson's thrush","swth","hylocichla ustulata","cathartus ustulatus"
-"757","gray-cheeked thrush","gray-cheeked thrush/                 bicknell's thursh","gcbt","hylocichla minima","cathartes minimus"
+"757","gray-cheeked thrush","gray-cheeked thrush/                 bicknell's thursh","gcbt","hylocichla minima","cathartes minimus"
 "756","veery","veery","veer","hylocichla fuscescens","catharus fuscescens"
 "766","eastern bluebird","eastern bluebird","eabl","sialia sialia","sialia sialis"
 "767","western bluebird","western bluebird","webl","sialia mexicana","sialia mexicana"
@@ -639,7 +639,7 @@
 "764.1","siberian rubythroat","siberian rubythroat","siru","calliope calliope","luscinia calliope"
 "754","townsend's solitaire","townsend's solitaire","toso","myadestes townsendi","myadestes townsendi"
 "747","arctic warbler","arctic warbler","arwa","acacanthopneuste borealis","phylloscopus borealis"
-"747.1","middendorff's grasshopper    warbler","middendorff's                 grasshopper-warbler","migw","locustella ochotensis","locustella ochotensis"
+"747.1","middendorff's grasshopper    warbler","middendorff's                 grasshopper-warbler","migw","locustella ochotensis","locustella ochotensis"
 "749.1","mountain accentor","siberian accentor","siac","prunella montanella","prunella montanella"
 "751","blue-gray gnatcatcher","blue-gray gnatcatcher","bggn","polioptila caerulea","polioptila caerulea"
 "752","black-tailed gnatcatcher","black-tailed gnatcatcher","btgn","polioptila melanura","polioptila melanura"
@@ -817,7 +817,7 @@
 "545","baird's sparrow","baird's sparrow","bais","ammodramus bairdi","ammodramus bairdii"
 "548","leconte's sparrow","le conte's sparrow","lcsp","passerherbulus lecontei","ammodramus leconteii"
 "547","henslow's sparrow","henslow's sparrow","hesp","passerherbulus henslowi","ammodramus henslowii"
-"549","sharp-tailed sparrow","saltmarsh                 sharp-tailed sparrow","ssts","passerherbulus caudacutus","ammodramus caudacutus"
+"549","sharp-tailed sparrow","saltmarsh                 sharp-tailed sparrow","ssts","passerherbulus caudacutus","ammodramus caudacutus"
 "550","seaside sparrow","seaside sparrow","sesp","passerherbulus maritimus","ammodramus maritimus"
 "551","dusky seaside sparrow","dusky seaside sparrow","duss","passerherbulus nigrescens","ammodramus maritimus"
 "574.1","cape sable sparrow","cape sable sparrow","sssp","ammospiza mirabilis","ammodramus maritimus"
