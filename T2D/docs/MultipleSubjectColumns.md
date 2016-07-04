@@ -24,15 +24,17 @@
 
 ## Analysis of the Problem
 
-Hypothetically, a table can have several subject columns (i.e. composite key).
-In this document we analyze the tables with several subject columns from T2D gold standard and show that in most cases several subject columns are attributed to an annotation mistake.
+Hypothetically, a table can have several rdfs:label columns (i.e. subject columns).
+For instance, it can lists the name of the subject matter in different languages.
+In this document, we analyze the tables with several subject columns from T2D gold standard and show that in most cases several rdfs:label annotations (i.e. subject columns) are attributed to an annotation mistake.
 We proceed as follows:
 * For each table we first show the table data.
-* We also show property annotations. According to T2D the annotations have the following header.
+* We also show property annotations. According to T2D the property annotations have the following header.
 
 | DBpedia property URI | Column header (value from the first row) |	Is key column (boolean) |	Column index|
 |-------------------------------|
 * We show the class annotation for the table for the sake of completeness.
+* We provide an example of RDF, which can be generated from T2D annotation.
 * We provide a comment on the performed property annotation.
 
 ### 10453276_0_7370421113682439765.csv
@@ -68,9 +70,19 @@ We proceed as follows:
 
 No class specified
 
+#### T2D Based RDF
+```
+<http://example.com/10453276_0_7370421113682439765.csv/1> <http://www.w3.org/2000/01/rdf-schema#label> "Single Story" .
+<http://example.com/10453276_0_7370421113682439765.csv/1> <http://www.w3.org/2000/01/rdf-schema#label> "$185483" .
+<http://example.com/10453276_0_7370421113682439765.csv/1> <http://www.w3.org/2000/01/rdf-schema#label> "$133" .
+```
+
 #### Comments
 
-The table describes prices for real estate based on keywords. The subject is a real estate, which has keyword(-s), average price, and price per square foot. We argue, that this table does not contain subject column. However, it can be restored by linking this table to another table or generated automatically if primary key is necessary (i.e. for generation of subject URIs per row) The original mapping has 3 "rdfs:label" properties for each of the columns, which does not make much sense in this case.
+The table describes prices for real estate based on keywords.
+The subject is a real estate, which has keyword(-s), average price, and price per square foot.
+We argue, that this table does not contain subject column.
+The original mapping has 3 "rdfs:label" properties for each of the columns.
 
 ### 17769450_0_8003688464359007517.csv
 
@@ -101,14 +113,22 @@ The table describes prices for real estate based on keywords. The subject is a r
 
 "17769450_0_8003688464359007517.tar.gz","MusicalWork","http://dbpedia.org/ontology/MusicalWork","0"
 
+#### T2D Based RDF
+```
+<http://example.com/17769450_0_8003688464359007517.csv/1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://dbpedia.org/ontology/MusicalWork> .
+<http://example.com/17769450_0_8003688464359007517.csv/1> <http://www.w3.org/2000/01/rdf-schema#label> "daydreaming (luv it mix)" .
+<http://example.com/17769450_0_8003688464359007517.csv/1> <http://www.w3.org/2000/01/rdf-schema#label> "massive attack" .
+<http://example.com/17769450_0_8003688464359007517.csv/1> <http://dbpedia.org/ontology/duration> "5:27" .
+```
+
 #### Comments
 The table lists the songs from an album of an artist in an online shop.
 The data can be modeled as RDF in two different ways, depending on a use case at the hand:
-* "artist" is a subject column, "artist" released a song ("name") with duration "time", "price" and track number "" (i.e. first column).
-* "name" is a subject column, which was released by an "artist", has "time", "price" and track number ""
-* There is no subject column (i.e. album). Then every row has a track "name", with track number "" (first row), written by "artist", with duration "time" and "price".
+* "artist" is a subject column (rdfs:label), "artist" released a song ("name") with duration "time", "price" and track number "" (i.e. first column).
+* "name" is a subject column (rdfs:label), which was released by an "artist", has "time", "price" and track number ""
+* There is no subject column (i.e. album is a subject). Then every row has a track "name", with track number "" (first row), written by "artist", with duration "time" and "price".
 
-Originally, T2D lists two rdfs:labels "name" and "artist", which does not conforms with any of proposed RDF mapping schemas.
+Originally, T2D lists two rdfs:labels "name" and "artist", which means that subject is identified by both artist and song name. That would mean that any row is linked to two URIs at the same time.
 
 ### 24003697_0_8569423605161973748.csv
 
@@ -127,7 +147,6 @@ Originally, T2D lists two rdfs:labels "name" and "artist", which does not confor
 | "3" | "chinese monal"                 | "lophophorus lhuysii"       |
 | "2" | "white eared pheasant"          | "crossoptilon crossoptilon" |
 
-
 #### Property Annotations
 
 |                                              |                  |        |     |
@@ -140,6 +159,14 @@ Originally, T2D lists two rdfs:labels "name" and "artist", which does not confor
 
 "24003697_0_8569423605161973748.tar.gz","Bird","http://dbpedia.org/ontology/Bird",""
 
+#### T2D Based RDF
+```
+<http://example.com/24003697_0_8569423605161973748.csv/1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://dbpedia.org/ontology/Bird> .
+<http://example.com/24003697_0_8569423605161973748.csv/1> <http://www.w3.org/2000/01/rdf-schema#label> "2" .
+<http://example.com/24003697_0_8569423605161973748.csv/1> <http://www.w3.org/2000/01/rdf-schema#label> "snow partridge" .
+<http://example.com/24003697_0_8569423605161973748.csv/1> <http://www.w3.org/2000/01/rdf-schema#label> "lerwa lerwa" .
+```
+
 #### Comments
 
 The table lists species of birds with their English and scientific (i.e. Latin) names.
@@ -147,7 +174,7 @@ The RDF can be modeled by selecting second column as a subject column.
 Then for each row, the third column will represent [scientific name](http://dbpedia.org/ontology/scientificName).
 The first column can not be guessed by human as it contains numerical information.
 
-T2D defines all three columns as rdfs:label.
+T2D defines all three columns as rdfs:label. While English and scientific names can be used as rdfs:labels (although more specific property for scientific name exists), it is incorrect to use it for numerical value in the first column
 
 ### 27100349_0_4569354779422013472.csv
 
@@ -175,13 +202,22 @@ T2D defines all three columns as rdfs:label.
 
 "27100349_0_4569354779422013472.tar.gz","MusicalWork","http://dbpedia.org/ontology/MusicalWork",""
 
+#### T2D Based RDF
+```
+<http://example.com/27100349_0_4569354779422013472.csv/1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://dbpedia.org/ontology/MusicalWork> .
+<http://example.com/27100349_0_4569354779422013472.csv/1> <http://www.w3.org/2000/01/rdf-schema#label> "The Gipsy Kings" .
+<http://example.com/27100349_0_4569354779422013472.csv/1> <http://www.w3.org/2000/01/rdf-schema#label> "Arena CivicaMilan" .
+<http://example.com/27100349_0_4569354779422013472.csv/1> <http://dbpedia.org/ontology/cost> "From £40.6" .
+```
+
 #### Comments
 
 The table lists the ticket prices for the concerts at different locations.
+The class annotation is incorrect and should be Event or Musical Event (gig, concert).
 The data can be modeled as RDF as follows:
 * There is no subject column (i.e. concert is a subject matter). Then every row has a concert "date/time" (first column), band name (second column), concert place (third column), the cheapest ticket price (fourth column).
 
-Originally, T2D lists two rdfs:labels "Title" and "Artist", however the table talks about concerts, not songs in this case. This is obviously an annotation mistake.
+Originally, T2D lists two rdfs:labels "Title" and "Artist", however the table talks about concerts, not songs in this case.
 
 ### 2849108_0_5238405355789704342.csv
 
@@ -208,7 +244,27 @@ Originally, T2D lists two rdfs:labels "Title" and "Artist", however the table ta
 | "http://dbpedia.org/ontology/populationAsOf"                   | "Population 2000"    | "False" | "3" |
 | "http://www.w3.org/2000/01/rdf-schema#label"                   | "City Name"          | "True"  | "1" |
 
+#### Class Annotation
+
+"2849108_0_5238405355789704342.tar.gz","City","http://dbpedia.org/ontology/City","0"
+
+#### T2D Based RDF
+```
+<http://example.com/2849108_0_5238405355789704342.csv/1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://dbpedia.org/ontology/City> .
+<http://example.com/2849108_0_5238405355789704342.csv/1> <http://www.w3.org/2000/01/rdf-schema#label> "&nbsp;".
+<http://example.com/2849108_0_5238405355789704342.csv/1> <http://www.w3.org/2000/01/rdf-schema#label> "Speed".
+<http://example.com/2849108_0_5238405355789704342.csv/2> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://dbpedia.org/ontology/City> .
+<http://example.com/2849108_0_5238405355789704342.csv/2> <http://www.w3.org/2000/01/rdf-schema#label> "&nbsp;".
+<http://example.com/2849108_0_5238405355789704342.csv/2> <http://www.w3.org/2000/01/rdf-schema#label> "North Carolina".
+```
+
 #### Comments
+
+We call the table such as listed above as vertical table.
+The header of such a table is in the first column.
+Before annotation and transformation to RDF such a table has to be rotated 90 degrees clockwise.
+The T2D Gold Standard does not categorize tables into vertical tables.
+Thus, the annotation for this table can not be used as is.
 
 ### 34501970_0_2477755352098394078.csv
 
@@ -236,7 +292,31 @@ Originally, T2D lists two rdfs:labels "Title" and "Artist", however the table ta
 | "http://dbpedia.org/ontology/Work/runtime"   | "length" | "False" | "8" |
 | "http://www.w3.org/2000/01/rdf-schema#label" | "title"  | "True"  | "4" |
 
+#### Class Annotation
+
+"34501970_0_2477755352098394078.tar.gz","Song","http://dbpedia.org/ontology/Song","0"
+
+#### T2D Based RDF
+```
+<http://example.com/34501970_0_2477755352098394078.csv/1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://dbpedia.org/ontology/Song> .
+<http://example.com/34501970_0_2477755352098394078.csv/1> <http://www.w3.org/2000/01/rdf-schema#label> "low mp3" .
+<http://example.com/34501970_0_2477755352098394078.csv/1> <http://www.w3.org/2000/01/rdf-schema#label> "back home again mp3" .
+<http://example.com/34501970_0_2477755352098394078.csv/1> <http://dbpedia.org/ontology/creationYear> "NULL" .
+<http://example.com/34501970_0_2477755352098394078.csv/1> <http://dbpedia.org/ontology/album> "badman winter 2001-2002 sample mp3" .
+<http://example.com/34501970_0_2477755352098394078.csv/1> <http://dbpedia.org/ontology/Work/runtime> "0:05:21" .
+```
+
 #### Comments
+
+The table lists mp3 files for the songs.
+Similar to "17769450_0_8003688464359007517.csv" T2D annotates "artist" and "title" columns with rdfs:label property.
+While the table lists songs, this table contains two subject matters:
+* mp3 file
+* a musical work
+Therefore, RDF can be modeled as:
+* "file" is a subject column (rdfs:label), has "size", has "date/time", has "bitrate", has "sampling frequency", about song (no subject column) with "title", "artist", "year", "album", "length".
+
+Originally, T2D ignores the information about mp3 file and only annotates information about a song.
 
 ### 37402655_0_9176587382722029523.csv
 
@@ -269,7 +349,23 @@ Originally, T2D lists two rdfs:labels "Title" and "Artist", however the table ta
 | "http://www.w3.org/2000/01/rdf-schema#label" | "vorname"      | "True"  | "1" |
 | "http://dbpedia.org/ontology/Person/height"  | "grösse"       | "False" | "5" |
 
+#### Class Annotation
+
+"37402655_0_9176587382722029523.tar.gz","SoccerPlayer","http://dbpedia.org/ontology/SoccerPlayer","0"
+
+#### T2D Based RDF
+```
+<http://example.com/37402655_0_9176587382722029523.csv/1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://dbpedia.org/ontology/SoccerPlayer> .
+<http://example.com/37402655_0_9176587382722029523.csv/1> <http://www.w3.org/2000/01/rdf-schema#label> "vorname" .
+<http://example.com/37402655_0_9176587382722029523.csv/1> <http://www.w3.org/2000/01/rdf-schema#label> "stefano" .
+<http://example.com/37402655_0_9176587382722029523.csv/2> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://dbpedia.org/ontology/SoccerPlayer> .
+<http://example.com/37402655_0_9176587382722029523.csv/2> <http://www.w3.org/2000/01/rdf-schema#label> "künstlername" .
+<http://example.com/37402655_0_9176587382722029523.csv/2> <http://www.w3.org/2000/01/rdf-schema#label> "-" .
+```
+
 #### Comments
+
+This table is similar to "2849108_0_5238405355789704342.csv" (i.e. vertical table). As T2D does not include information about tables being layout/relational/vertical, such tables require additional annotation before usage.
 
 ### 38146710_0_3777366193503047044.csv
 
@@ -297,7 +393,24 @@ Originally, T2D lists two rdfs:labels "Title" and "Artist", however the table ta
 | "http://www.w3.org/2000/01/rdf-schema#label" | "network"          | "True"  | "0" |
 | "http://www.w3.org/2000/01/rdf-schema#label" | "affiliate"        | "True"  | "1" |
 
+#### Class Annotation
+
+"38146710_0_3777366193503047044.tar.gz","TelevisionStation","http://dbpedia.org/ontology/TelevisionStation","0"
+
+#### T2D Based RDF
+```
+<http://example.com/38146710_0_3777366193503047044.csv/1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://dbpedia.org/ontology/TelevisionStation> .
+<http://example.com/38146710_0_3777366193503047044.csv/1> <http://www.w3.org/2000/01/rdf-schema#label> "abc" .
+<http://example.com/38146710_0_3777366193503047044.csv/1> <http://www.w3.org/2000/01/rdf-schema#label> "kltv" .
+<http://example.com/38146710_0_3777366193503047044.csv/1> <http://dbpedia.org/ontology/pictureFormat> "hd" .
+```
+
 #### Comments
+
+The table lists affiliates of the global broadcasting companies serving content in Tyler, Texas, United States (e.g. [KCEB](https://en.wikipedia.org/wiki/KCEB)).
+The local companies can be identified by "affiliate" column, which makes it perfect candidate for rdfs:label.
+However, "network" column is better annotated with "dbpedia-owl:affiliate" or "dbpedia-owl:parentCompany" property.
+"local channel" can be possibly annotated with "dbpedia-owl:channel".
 
 ### 42846393_2_6922315287291245126.csv
 
@@ -329,7 +442,25 @@ Originally, T2D lists two rdfs:labels "Title" and "Artist", however the table ta
 | "http://www.w3.org/2000/01/rdf-schema#label" | "PRENOM" | "True" | "1" |
 | "http://www.w3.org/2000/01/rdf-schema#label" | "NOM"    | "True" | "0" |
 
+#### Class Annotation
+
+"42846393_2_6922315287291245126.tar.gz","Athlete","http://dbpedia.org/ontology/Athlete","0"
+
+#### T2D Based RDF
+```
+<http://example.com/42846393_2_6922315287291245126.csv/1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://dbpedia.org/ontology/Athlete> .
+<http://example.com/42846393_2_6922315287291245126.csv/1> <http://www.w3.org/2000/01/rdf-schema#label> "CAROFF" .
+<http://example.com/42846393_2_6922315287291245126.csv/1> <http://www.w3.org/2000/01/rdf-schema#label> "Arnaud" .
+```
+
 #### Comments
+
+The table lists results of athletes on a particular competition.
+"VMA" column can be possibly annotated with "dbpedia-owl:rank" property.
+"2000 Metres" can be annotated by generic "[dbpedia-owl:runtime](http://dbpedia.org/ontology/runtime)" property.
+Also, for first/last name [dbpedia-owl](http://dbpedia.org/ontology/personName) should be used.
+In general case, for the persons FOAF vocabulary shall be used.
+T2D annotating first/last names of a person as rdfs:label thus losing semantical meaning of the original concept.
 
 ### 47101798_1_4424372688353800689.csv
 
@@ -353,7 +484,27 @@ Originally, T2D lists two rdfs:labels "Title" and "Artist", however the table ta
 | "http://www.w3.org/2000/01/rdf-schema#label" | "Album" | "True"  | "2" |
 | "http://www.w3.org/2000/01/rdf-schema#label" | "Name"  | "True"  | "1" |
 
+#### Class Annotation
+
+"47101798_1_4424372688353800689.tar.gz","MusicalWork","http://dbpedia.org/ontology/MusicalWork","0"
+
+#### T2D Based RDF
+```
+<http://example.com/47101798_1_4424372688353800689.csv/1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://dbpedia.org/ontology/MusicalWork> .
+<http://example.com/47101798_1_4424372688353800689.csv/1> <http://www.w3.org/2000/01/rdf-schema#label> "Through It All" .
+<http://example.com/47101798_1_4424372688353800689.csv/1> <http://www.w3.org/2000/01/rdf-schema#label> "Choose Your Battles - EP" .
+<http://example.com/47101798_1_4424372688353800689.csv/1> <http://dbpedia.org/ontology/Work/runtime> "4:12" .
+<http://example.com/47101798_1_4424372688353800689.csv/1> <http://dbpedia.org/ontology/cost> "?0.79" .
+```
+
 #### Comments
+Similar to "17769450_0_8003688464359007517.csv" the table lists the songs from an album of an artist in an online shop.
+The data can be modeled as RDF in two different ways, depending on a use case at the hand:
+* The table is about songs. "Name" is a subject column (rdfs:label), included into "album", with duration "Time", "Price" and track number "" (i.e. first column).
+* The table is about album. "Album" is a subject column (rdfs:label), which has track "Name" with "Time", "Price" and track number "" (i.e. first column)
+* There is no subject column (i.e. artist is a subject). Then artist has released a track "Name", with track number "" (first row), included in an "Album", with duration "Time" and "Price".
+
+T2D annotates both "Name" and "Album" as rdfs:label, which means that table corresponds to two different classes. It is controversial, because T2D annotates table with only one MusicalWork class.
 
 ### 48495038_0_1033305650426317920.csv
 
@@ -381,7 +532,21 @@ Originally, T2D lists two rdfs:labels "Title" and "Artist", however the table ta
 | "http://www.w3.org/2000/01/rdf-schema#label" | "listen" | "True"  | "2" |
 | "http://www.w3.org/2000/01/rdf-schema#label" | "Album"  | "True"  | "4" |
 
+#### Class Annotation
+
+"48495038_0_1033305650426317920.tar.gz","Album","http://dbpedia.org/ontology/Album","0"
+
+#### T2D Based RDF
+```
+<http://example.com/48495038_0_1033305650426317920.csv/1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://dbpedia.org/ontology/Album> .
+<http://example.com/48495038_0_1033305650426317920.csv/1> <http://www.w3.org/2000/01/rdf-schema#label> "Another Sacrifice" .
+<http://example.com/48495038_0_1033305650426317920.csv/1> <http://www.w3.org/2000/01/rdf-schema#label> "Banished Psalms" .
+<http://example.com/48495038_0_1033305650426317920.csv/1> <http://dbpedia.org/ontology/Work/runtime> "3:54" .
+```
 #### Comments
+Similar to "17769450_0_8003688464359007517.csv" the table lists the songs from an album of an artist in an online shop.
+In the case of this table, class corresponds to "Album", while property annotation include rdfs:label for both "Album" and "Song".
+Moreover, "runtime" property corresponds to duration of a "Song", while it has to be duration of an "Album".
 
 ### 53264869_1_530811839053269226.csv
 
@@ -403,7 +568,27 @@ Originally, T2D lists two rdfs:labels "Title" and "Artist", however the table ta
 | "http://dbpedia.org/ontology/date"              | "time"         | "False" | "4" |
 | "http://dbpedia.org/ontology/date"              | "date"         | "False" | "3" |
 
+#### Class Annotation
+
+"53264869_1_530811839053269226.tar.gz","Software","http://dbpedia.org/ontology/Software","0"
+
+#### T2D Based RDF
+```
+<http://example.com/53264869_1_530811839053269226.csv/1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://dbpedia.org/ontology/Software> .
+<http://example.com/53264869_1_530811839053269226.csv/1> <http://www.w3.org/2000/01/rdf-schema#label> "tcpmib.dll" .
+<http://example.com/53264869_1_530811839053269226.csv/1> <http://www.w3.org/2000/01/rdf-schema#label> "5.2.3790.4211" .
+<http://example.com/53264869_1_530811839053269226.csv/1> <http://dbpedia.org/ontology/Software/fileSize> "49152" .
+<http://example.com/53264869_1_530811839053269226.csv/1> <http://dbpedia.org/ontology/date> "24-dec-2007" .
+<http://example.com/53264869_1_530811839053269226.csv/1> <http://dbpedia.org/ontology/date> "13:35" .
+<http://example.com/53264869_1_530811839053269226.csv/1> <http://dbpedia.org/ontology/computingPlatform> "ia-64" .
+```
+
 #### Comments
+
+The table lists DLL libraries.
+Meaningful label is missing, therefore we argue that the table has no subject, i.e. talks about DLL libraries which have "file name", "version", "date", "time", "platform", "sp requirement" and "service branch".
+While it make sense to merge "date" and "time" columns, this can not be done by annotating it with the same property (T2D), additional metadata is required for this annotation.
+"file version" has rdfs:label in T2D, while the table is talking about "Software" (rdfs:label should be short human-readable description of the Software).
 
 ### 54802079_0_6709615660980454909.csv
 
@@ -430,7 +615,23 @@ Originally, T2D lists two rdfs:labels "Title" and "Artist", however the table ta
 | "http://www.w3.org/2000/01/rdf-schema#label" | "abeliophyllum distichum"               | "True" | "0" |
 | "http://www.w3.org/2000/01/rdf-schema#label" | "oleaceae"                              | "True" | "2" |
 
+#### Class Annotation
+
+"54802079_0_6709615660980454909.tar.gz","Plant","http://dbpedia.org/ontology/Plant",""
+
+#### T2D Based RDF
+```
+<http://example.com/54802079_0_6709615660980454909.csv/1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://dbpedia.org/ontology/Plant> .
+<http://example.com/54802079_0_6709615660980454909.csv/1> <http://www.w3.org/2000/01/rdf-schema#label> "abeliophyllum distichum" .
+<http://example.com/54802079_0_6709615660980454909.csv/1> <http://www.w3.org/2000/01/rdf-schema#label> "schneeforsythie wei&szlig;e forsythie" .
+<http://example.com/54802079_0_6709615660980454909.csv/1> <http://www.w3.org/2000/01/rdf-schema#label> "oleaceae" .
+```
+
 #### Comments
+This table is similar to 24003697_0_8569423605161973748.csv in sense that it maps all of the columns to rdfs:label.
+The table talks about plants and includes Latin name of the plant in the first column, German name in the second column and plant family in the last column.
+Given that the table is mapped to German subset of DBpedia, German name should be selected as subject column (i.e. rdfs:label), for example, "schneeforsythie weisse forsythie", while the first column would correspond to "scientificName" property and the third column will be "dbo:family".
+Annotating all three columns as rdfs:label is incorrect.
 
 ### 60884685_1_5420701306478974044.csv
 
@@ -458,7 +659,23 @@ Originally, T2D lists two rdfs:labels "Title" and "Artist", however the table ta
 | "http://dbpedia.org/ontology/Work/runtime"   | "Time"  | "False" | "3" |
 | "http://dbpedia.org/ontology/cost"           | "Price" | "False" | "4" |
 
+#### Class Annotation
+
+"60884685_1_5420701306478974044.tar.gz","MusicalWork","http://dbpedia.org/ontology/MusicalWork","0"
+
+#### T2D Based RDF
+```
+<http://example.com/60884685_1_5420701306478974044.csv/1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://dbpedia.org/ontology/MusicalWork> .
+<http://example.com/60884685_1_5420701306478974044.csv/1> <http://www.w3.org/2000/01/rdf-schema#label> "LvUrFR3NZ" .
+<http://example.com/60884685_1_5420701306478974044.csv/1> <http://www.w3.org/2000/01/rdf-schema#label> "Halo 3 (Original Soundtrack)" .
+<http://example.com/60884685_1_5420701306478974044.csv/1> <http://dbpedia.org/ontology/Work/runtime> "2:18" .
+<http://example.com/60884685_1_5420701306478974044.csv/1> <http://dbpedia.org/ontology/cost> "$0.99" .
+```
+
 #### Comments
+
+This table is similar to 17769450_0_8003688464359007517.csv. What is surpising, that T2D includes dbo:cost property annotation in this table, but does not include it in 17769450_0_8003688464359007517.csv (which also contains cost column).
+RDF data can be modeled with a "Song" or an "Album" as main subject. However, T2D uses rdfs:label for both of them, which is an annotation mistake.
 
 ### 61108455_0_4273649346480472385.csv
 
@@ -487,7 +704,27 @@ Originally, T2D lists two rdfs:labels "Title" and "Artist", however the table ta
 | "http://dbpedia.org/ontology/zipCode"            | "zip"     | "False" | "4" |
 | "http://dbpedia.org/ontology/bedCount"           | "beds"    | "False" | "6" |
 
+#### Class Annotation
+
+"61108455_0_4273649346480472385.tar.gz","Thing","http://www.w3.org/2002/07/owl#Thing","0"
+
+#### T2D Based RDF
+```
+<http://example.com/61108455_0_4273649346480472385.csv/1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Thing> .
+<http://example.com/61108455_0_4273649346480472385.csv/1> <http://www.w3.org/2000/01/rdf-schema#label> "127 felix street" .
+<http://example.com/61108455_0_4273649346480472385.csv/1> <http://www.w3.org/2000/01/rdf-schema#label> "georgetown" .
+<http://example.com/61108455_0_4273649346480472385.csv/1> <http://dbpedia.org/ontology/federalState> "ky" .
+<http://example.com/61108455_0_4273649346480472385.csv/1> <http://dbpedia.org/ontology/zipCode> "40324" .
+<http://example.com/61108455_0_4273649346480472385.csv/1> <http://dbpedia.org/ontology/bedCount> "3" .
+<http://example.com/61108455_0_4273649346480472385.csv/1> <http://dbpedia.org/ontology/Building/floorArea> "1232" .
+```
+
 #### Comments
+The table lists the deals for the real estate, which is "dbo:Sales" class in DBpedia ontology.
+"dbo:Thing" class is a superclass of everything and does not provide any semantic meaning for a subject.
+"dbo:Sales" expires on "expires" and is about property of type "type", located on "street", "city", "state", "zip", with number of "beds", "baths", "sq. ft.", and additional information "util. paid", "w/d", "garage", "rent", "deposit", "option to buy", "virtual tour", "application".
+"street" and "city" should be modeled with "dbo:locatedIn" property (possibly with blank node).
+Annotating location with rdfs:label in this case is incorrect.
 
 ### 63198107_0_5688435789215389159.csv
 
@@ -511,8 +748,23 @@ Originally, T2D lists two rdfs:labels "Title" and "Artist", however the table ta
 | "http://dbpedia.org/ontology/cost"           | "Price" | "False" | "4" |
 | "http://www.w3.org/2000/01/rdf-schema#label" | "Album" | "True"  | "2" |
 
+#### Class Annotation
+
+"63198107_0_5688435789215389159.tar.gz","MusicalWork","http://dbpedia.org/ontology/MusicalWork","0"
+
+#### T2D Based RDF
+```
+<http://example.com/63198107_0_5688435789215389159.csv/1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://dbpedia.org/ontology/MusicalWork> .
+<http://example.com/63198107_0_5688435789215389159.csv/1> <http://www.w3.org/2000/01/rdf-schema#label> "No Guarantees (Money Back) [Shorter]" .
+<http://example.com/63198107_0_5688435789215389159.csv/1> <http://www.w3.org/2000/01/rdf-schema#label> "No Guarantees (Money Back) - Single" .
+<http://example.com/63198107_0_5688435789215389159.csv/1> <http://dbpedia.org/ontology/Work/runtime> "3:23" .
+<http://example.com/63198107_0_5688435789215389159.csv/1> <http://dbpedia.org/ontology/cost> "$0.99" .
+```
 
 #### Comments
+
+This table is similar to 17769450_0_8003688464359007517.csv. What is surpising, that T2D includes dbo:cost property annotation in this table, but does not include it in 17769450_0_8003688464359007517.csv (which also contains cost column).
+RDF data can be modeled with a "Song" or an "Album" as main subject. However, T2D uses rdfs:label for both of them, which is an annotation mistake.
 
 ### 78616821_0_2458612333287914096.csv
 
@@ -543,7 +795,22 @@ Originally, T2D lists two rdfs:labels "Title" and "Artist", however the table ta
 | "http://www.w3.org/2000/01/rdf-schema#label" | "Artist" | "True"  | "2" |
 | "http://www.w3.org/2000/01/rdf-schema#label" | "Name"   | "True"  | "1" |
 
+#### Class Annotation
+
+"78616821_0_2458612333287914096.tar.gz","MusicalWork","http://dbpedia.org/ontology/MusicalWork","0"
+
+#### T2D Based RDF
+```
+<http://example.com/78616821_0_2458612333287914096.csv/1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://dbpedia.org/ontology/MusicalWork> .
+<http://example.com/78616821_0_2458612333287914096.csv/1> <http://www.w3.org/2000/01/rdf-schema#label> "Over You" .
+<http://example.com/78616821_0_2458612333287914096.csv/1> <http://www.w3.org/2000/01/rdf-schema#label> "Honor Society" .
+<http://example.com/78616821_0_2458612333287914096.csv/1> <http://dbpedia.org/ontology/Work/runtime> "3:04" .
+<http://example.com/78616821_0_2458612333287914096.csv/1> <http://dbpedia.org/ontology/cost> "$0.99" .
+```
 #### Comments
+
+This table is similar to 17769450_0_8003688464359007517.csv. What is surpising, that T2D includes dbo:cost property annotation in this table, but does not include it in 17769450_0_8003688464359007517.csv (which also contains cost column).
+RDF data can be modeled with a "Song" or an "Artist" as main subject. However, T2D uses rdfs:label for both of them, which is an annotation mistake.
 
 ### 80992694_0_3506971500806631353.csv
 
@@ -586,7 +853,24 @@ Originally, T2D lists two rdfs:labels "Title" and "Artist", however the table ta
 | "http://dbpedia.org/ontology/rank"           | "Medal/Position" | "False" | "4" |
 | "http://www.w3.org/2000/01/rdf-schema#label" | "Year"           | "True"  | "2" |
 
+#### Class Annotation
+
+"80992694_0_3506971500806631353.tar.gz","SportCompetitionResult","http://dbpedia.org/ontology/SportCompetitionResult","0"
+
+#### T2D Based RDF
+```
+<http://example.com/80992694_0_3506971500806631353.csv/1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://dbpedia.org/ontology/SportCompetitionResult> .
+<http://example.com/80992694_0_3506971500806631353.csv/1> <http://www.w3.org/2000/01/rdf-schema#label> "Olympic Games" .
+<http://example.com/80992694_0_3506971500806631353.csv/1> <http://www.w3.org/2000/01/rdf-schema#label> "200m Freestyles" .
+<http://example.com/80992694_0_3506971500806631353.csv/1> <http://www.w3.org/2000/01/rdf-schema#label> "2008" .
+<http://example.com/80992694_0_3506971500806631353.csv/1> <http://dbpedia.org/ontology/rank> "8th" .
+```
+
 #### Comments
+
+The table lists personal results of Michael Phelps in various competitions.
+The subject matter is a "Result", accomplished at "Competition", in a category "Event", in a "Year", with the "Time", and where athlete got "Medal/Position".
+T2D annotates 3 columns with rdfs:label ("Event", "Competition" and "Year"), thus losing semantical meaning of the original concept.
 
 ### 83577589_0_3008022348570648346.csv
 
@@ -620,4 +904,21 @@ Originally, T2D lists two rdfs:labels "Title" and "Artist", however the table ta
 | "http://dbpedia.org/ontology/releaseDate"    | "released:" | "False" | "7" |
 | "http://dbpedia.org/ontology/recordLabel"    | "label:"    | "False" | "3" |
 
+#### Class Annotation
+
+"83577589_0_3008022348570648346.tar.gz","MusicalWork","http://dbpedia.org/ontology/MusicalWork","0"
+
+#### T2D Based RDF
+```
+<http://example.com/83577589_0_3008022348570648346.csv/1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://dbpedia.org/ontology/MusicalWork> .
+<http://example.com/83577589_0_3008022348570648346.csv/1> <http://www.w3.org/2000/01/rdf-schema#label> "101179" .
+<http://example.com/83577589_0_3008022348570648346.csv/2> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://dbpedia.org/ontology/MusicalWork> .
+<http://example.com/83577589_0_3008022348570648346.csv/2> <http://www.w3.org/2000/01/rdf-schema#label> "an ocean bed ep" .
+```
+
 #### Comments
+We call the table such as listed above as vertical table.
+The header of such a table is in the first column.
+Before annotation and transformation to RDF such a table has to be rotated 90 degrees clockwise.
+The T2D Gold Standard does not categorize tables into vertical tables.
+Thus, the annotation for this table can not be used as is.

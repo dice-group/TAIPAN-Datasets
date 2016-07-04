@@ -1,4 +1,4 @@
-# Summary
+# Description
 This repository contains datasets for benchmarking the tasks of:
 * (T1) identifying subject column of a table;
 * (T2) matching Web Table columns to the properties inside knowledge bases (KBs), for instance, DBpedia;

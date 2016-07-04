@@ -22,8 +22,9 @@ All other (i.e. 971) considered as layout tables, which can not be mapped.
 
 ### Problems of the schema-level T2D
 * Property mapping files in the attributes_complete folder contained ^M character, which recognized as newline character on unix systems (23 CSV files) [Fixed]
-* The same applies for Web Tables (172 CSV files) [Fixed]
-* Contain files with multiple subject columns. It is advisable to blacklist these files, when working with T2D ([see discussion here](./docs/MultipleSubjectColumns.md))
+* The same applies for the Web Tables (172 CSV files) [Fixed]
+* The class annotations ("classes_complete.csv") IDs differ from tables_complete/attributes_complete IDs (extension .tar.gz instead of .csv)
+* Contain files with multiple rdfs:label (i.e. subject columns). It is advisable to blacklist these files, when working with T2D ([see discussion here](./docs/MultipleSubjectColumns.md))
   * 10453276_0_7370421113682439765.csv
   * 17769450_0_8003688464359007517.csv
   * 24003697_0_8569423605161973748.csv
@@ -43,6 +44,5 @@ All other (i.e. 971) considered as layout tables, which can not be mapped.
   * 78616821_0_2458612333287914096.csv
   * 80992694_0_3506971500806631353.csv
   * 83577589_0_3008022348570648346.csv
-
 
 ### Code snippets for the usage
