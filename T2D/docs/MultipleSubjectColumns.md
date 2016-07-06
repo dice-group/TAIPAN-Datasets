@@ -260,10 +260,11 @@ Originally, T2D lists two rdfs:labels "Title" and "Artist", however the table ta
 
 #### Comments
 
-We call the table such as listed above as vertical table.
-The header of such a table is in the first column.
+According to [1] such tables should be classified as horizontal listings.
+Identifying the row containing the subjects and predicates pose the biggest extraction challenge from this table type.
+The header of a table is in the first column.
 Before annotation and transformation to RDF such a table has to be rotated 90 degrees clockwise.
-The T2D Gold Standard does not categorize tables into vertical tables.
+The T2D Gold Standard does not provide classification of such tables as additional metadata.
 Thus, the annotation for this table can not be used as is.
 
 ### 34501970_0_2477755352098394078.csv
@@ -365,7 +366,13 @@ Originally, T2D ignores the information about mp3 file and only annotates inform
 
 #### Comments
 
-This table is similar to "2849108_0_5238405355789704342.csv" (i.e. vertical table). As T2D does not include information about tables being layout/relational/vertical, such tables require additional annotation before usage.
+This table is similar to "2849108_0_5238405355789704342.csv".
+According to [1] such tables should be classified as horizontal listings.
+Identifying the row containing the subjects and predicates pose the biggest extraction challenge from this table type.
+The header of a table is in the first column.
+Before annotation and transformation to RDF such a table has to be rotated 90 degrees clockwise.
+The T2D Gold Standard does not provide classification of such tables as additional metadata.
+Thus, the annotation for this table can not be used as is.
 
 ### 38146710_0_3777366193503047044.csv
 
@@ -917,8 +924,13 @@ T2D annotates 3 columns with rdfs:label ("Event", "Competition" and "Year"), thu
 ```
 
 #### Comments
-We call the table such as listed above as vertical table.
-The header of such a table is in the first column.
+According to [1] such tables should be classified as horizontal listings.
+Identifying the row containing the subjects and predicates pose the biggest extraction challenge from this table type.
+The header of a table is in the first column.
 Before annotation and transformation to RDF such a table has to be rotated 90 degrees clockwise.
-The T2D Gold Standard does not categorize tables into vertical tables.
+The T2D Gold Standard does not provide classification of such tables as additional metadata.
 Thus, the annotation for this table can not be used as is.
+
+## Literature
+
+[1] [Crestan, Eric, and Patrick Pantel. "Web-scale table census and classification." Proceedings of the fourth ACM international conference on Web search and data mining. ACM, 2011.](http://www.patrickpantel.com/download/papers/2011/wsdm11.pdf)
