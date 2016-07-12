@@ -11,7 +11,7 @@ T2D Gold Standard (T2D) consists of two parts:
 
 To address the task of matching Web Table columns to the properties inside KBs, schema-level gold standard should be used. It contains 1,748 tables of which 762 can be mapped to DBpedia classes and 7983 columns which correspond to DBpedia properties.
 Entity-level gold standard, which contains row-to-entity correspondences, does not serve the tasks defined above and thus is not included.
-We analyze the gold standard further and include our observations in [the T2D subfolder](./T2D/README.md).
+We analyze the gold standard, show that it contains more than XX% (TODO: calculate) erroneous annotations in [the T2D subfolder](./T2D/README.md).
 
 ## T2DStar Gold Standard
 T2DStar was developed by the authors of this repository to address the problems of T2D.

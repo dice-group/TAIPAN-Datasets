@@ -46,3 +46,4 @@ All other (i.e. 971) considered as layout tables, which can not be mapped.
   * 83577589_0_3008022348570648346.csv
 
 ### Code snippets for the usage
+* (extract_subject_column)[./snippets/extract_subject_column.py] snippet iterates over all annotated CSV tables and extracts subject columns into a separate file. Missing subject column is indicated with "-1"
