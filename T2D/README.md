@@ -44,6 +44,7 @@ All other (i.e. 971) considered as layout tables, which can not be mapped.
   * 78616821_0_2458612333287914096.csv
   * 80992694_0_3506971500806631353.csv
   * 83577589_0_3008022348570648346.csv
+* We further analyze randomly selected tables from T2D, which were re-annotated during creation of [T2DStar](../T2DStar/README.md). The analysis is described [here](./docs/T2DTableAnalysis.md).
 
 ### Code snippets for the usage
 * (extract_subject_column)[./snippets/extract_subject_column.py] snippet iterates over all annotated CSV tables and extracts subject columns into a separate file. Missing subject column is indicated with "-1"
