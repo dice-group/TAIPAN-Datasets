@@ -1,6 +1,15 @@
 # T2D Analysis (Random Sample)
 
-In this document we show the random sample of T2D containing 64 tables in total. These tables were re-annotated during creation of [T2DStar](../../T2DStar/README.md). To see the analysis of a particular table, click on the link in the list below.
+In this document we show the random sample of T2D containing 64 tables in total.
+These tables were re-annotated during creation of [T2DStar](../../T2DStar/README.md).
+To see the analysis of a particular table, click on the link in the list below.
+
+## Identified problems
+* T2D only identifies subject column (i.e. rdfs:label), while T2DStar identifies additional annotations. [Example table 1](./T2DTableAnalysis/14854950_0_7369669871837809428.csv.md), [Example table 2](./T2DTableAnalysis/23806649_0_1896909267378774466.csv.md), [Example table 3](./T2DTableAnalysis/26270372_1_3774607938887520564.csv.md)
+* Incorrect annotations, which are probably done algorithmically without involving human annotators. For example, dbo:collectionSize for "Country" column in [example table](./T2DTableAnalysis/15057462_0_1530812940719919446.csv.md), or "Active Ingredients" as dbo:commonName in [example table](./T2DTableAnalysis/2297876_2_6966366172015676804.csv.md)
+* Completely missing property annotations in T2D, which were identified in T2DStar. [Example Table 1](./T2DTableAnalysis/15330701_1_1150657259064624480.csv.md), [Example Table 2](./T2DTableAnalysis/23525318_0_7885756089060858697.csv.md)
+* Incorrect subject column identification, i.e. numerical column is identified as rdfs:label, [example table](./T2DTableAnalysis/25313031_0_7618936086293867880.csv.md)
+* T2D does not annotate all the possible columns, which was corrected by T2DStar annotators. See [example table](./T2DTableAnalysis/28079336_1_3124145965038277571.csv.md)
 
 ## List of involved CSV files
 
